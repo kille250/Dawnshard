@@ -9,24 +9,20 @@ using DragaliaAPI.Photon.Shared.Enums;
 
 namespace DragaliaAPI.Photon.Plugin.Helpers
 {
-    public static class QuestHelper
+    public static partial class QuestHelper
     {
-        private static class QuestIds
+        static QuestHelper()
         {
-            public const int MorsayatisReckoning = 226010101;
+            InitializeRaidQuestIds();
         }
 
-        // TODO: Find a way to leverage MasterAsset data to drive this instead
-        // of a static incomplete list
-        private static readonly ImmutableDictionary<int, DungeonTypes> SpecialDungeonTypes =
-            new Dictionary<int, DungeonTypes>()
-            {
-                { QuestIds.MorsayatisReckoning, DungeonTypes.Raid }
-            }.ToImmutableDictionary();
+        private static ImmutableHashSet<int> RaidQuestIds;
 
-        public static DungeonTypes GetDungeonType(int questId)
+        static partial void InitializeRaidQuestIds();
+
+        public static bool IsRaid(int questId)
         {
-            return SpecialDungeonTypes.GetValueOrDefault(questId, DungeonTypes.Normal);
+            return RaidQuestIds.Contains(questId);
         }
     }
 }
