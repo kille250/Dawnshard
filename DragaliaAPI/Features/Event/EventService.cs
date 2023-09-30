@@ -1,3 +1,4 @@
+﻿using System.Linq;
 ﻿using System.Diagnostics.CodeAnalysis;
 using DragaliaAPI.Database.Entities;
 using DragaliaAPI.Database.Repositories;
@@ -339,6 +340,10 @@ public class EventService(
     public async Task<CombatEventUserList> GetCombatEventUserData(int eventId)
     {
         Dictionary<int, int> itemDict = await GetEventItemDictionary(eventId);
+
+        if (await eventRepository.GetEventDataAsync(eventId) == null) {
+            return null;
+        }
 
         return new CombatEventUserList(
             eventId,

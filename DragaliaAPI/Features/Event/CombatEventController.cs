@@ -40,7 +40,9 @@ public class CombatEventController(
     {
         CombatEventEntryData resp = new();
 
+        await eventService.CreateEventData(request.event_id);
         // TODO: Complete first event mission once thats implemented
+        
 
         resp.combat_event_user_data = await eventService.GetCombatEventUserData(request.event_id);
         resp.update_data_list = await updateDataService.SaveChangesAsync();
