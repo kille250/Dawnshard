@@ -23,7 +23,7 @@ public class LoginGiftResetAction : IDailyResetAction
                 1000
             )
         );
-        
+
         this.presentService.AddPresent(
             new Present.Present(
                 PresentMessage.DragaliaLostTeam,

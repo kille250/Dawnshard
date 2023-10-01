@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using DragaliaAPI.Database.Entities;
 using DragaliaAPI.Database.Repositories;
 using DragaliaAPI.Features.Reward;
@@ -341,7 +341,8 @@ public class EventService(
     {
         Dictionary<int, int> itemDict = await GetEventItemDictionary(eventId);
 
-        if (await eventRepository.GetEventDataAsync(eventId) == null) {
+        if (await eventRepository.GetEventDataAsync(eventId) == null)
+        {
             return null;
         }
 
