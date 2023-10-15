@@ -114,7 +114,7 @@ public class SummonController(
                 new List<SummonList>()
                 {
                     new(
-                        summon_id: 1020025,
+                        summon_id: 1020022,
                         summon_type: 0,
                         summon_group_id: (int)BannerTypes.Normal,
                         single_crystal: 120,
