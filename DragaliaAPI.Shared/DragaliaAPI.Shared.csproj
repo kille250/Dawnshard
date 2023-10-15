@@ -6,11 +6,14 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="7.0.5" />
-		<PackageReference Include="Serilog" Version="2.12.0" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="7.0.11" />
+		<PackageReference Include="Serilog" Version="3.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -160,6 +163,9 @@
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="Resources\QuestSchedule\QuestScheduleInfo.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\SkillData.json">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="Resources\Story\EventStory.json">
@@ -322,6 +328,9 @@
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="Resources\WeaponBodyRarity.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\WeaponSkin.json">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
