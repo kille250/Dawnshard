@@ -18,6 +18,7 @@ using DragaliaAPI.Features.Player;
 using DragaliaAPI.Features.Present;
 using DragaliaAPI.Features.Quest;
 using DragaliaAPI.Features.Reward;
+using DragaliaAPI.Features.Reward.Handlers;
 using DragaliaAPI.Features.SavefileUpdate;
 using DragaliaAPI.Features.Shop;
 using DragaliaAPI.Features.Stamp;
@@ -25,6 +26,7 @@ using DragaliaAPI.Features.Talisman;
 using DragaliaAPI.Features.Tickets;
 using DragaliaAPI.Features.TimeAttack;
 using DragaliaAPI.Features.Trade;
+using DragaliaAPI.Features.Version;
 using DragaliaAPI.Helpers;
 using DragaliaAPI.Middleware;
 using DragaliaAPI.Models.Options;
@@ -141,12 +143,14 @@ public static class ServiceConfiguration
             .AddScoped<IPartyPowerService, PartyPowerService>()
             .AddScoped<IPartyPowerRepository, PartyPowerRepository>()
             // Chara feature
-            .AddScoped<ICharaService, CharaService>();
+            .AddScoped<ICharaService, CharaService>()
+            .AddScoped<IResourceVersionService, ResourceVersionService>();
 
         services.AddScoped<IBlazorIdentityService, BlazorIdentityService>();
 
         services.AddAllOfType<ISavefileUpdate>();
         services.AddAllOfType<IDailyResetAction>();
+        services.AddAllOfType<IRewardHandler>();
 
         services.AddHttpClient<IBaasApi, BaasApi>();
 
@@ -160,6 +164,8 @@ public static class ServiceConfiguration
             client.BaseAddress = new(options.StateManagerUrl);
         });
         services.AddScoped<IMatchingService, MatchingService>();
+
+        services.AddScoped<ResourceVersionActionFilter>();
 
         return services;
     }
